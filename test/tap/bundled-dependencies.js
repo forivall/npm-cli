@@ -84,8 +84,11 @@ function withFixture (t, fixture, tester) {
   fixture.create(fixturepath)
   mkdirp.sync(targetpath)
   common.npm(['pack', fixturepath], {cwd: basepath}, extractAndCheck)
-  function extractAndCheck (err, code) {
+  function extractAndCheck (err, code, stdout, stderr) {
     if (err) throw err
+    console.log('stdout: \n' + stdout)
+    console.log('stderr: \n' + stderr)
+
     t.is(code, 0, 'pack went ok')
     extractTarball(checkTests)
   }
