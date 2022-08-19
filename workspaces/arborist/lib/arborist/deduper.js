@@ -1,3 +1,5 @@
+
+/** @param {new (...args: any[]) => import("./index.types").ArboristApi} cls */
 module.exports = cls => class Deduper extends cls {
   async dedupe (options = {}) {
     // allow the user to set options on the ctor as well.

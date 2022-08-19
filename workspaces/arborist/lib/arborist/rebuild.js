@@ -47,7 +47,9 @@ const _global = Symbol.for('global')
 const _handleOptionalFailure = Symbol.for('handleOptionalFailure')
 const _trashList = Symbol.for('trashList')
 
+/** @param {new (...args: any[]) => import('./index.types').ArboristIndex & import('./index.types').ArboristApi} cls */
 module.exports = cls => class Builder extends cls {
+  /** @param {import('./index.types').ArboristOptions} options */
   constructor (options) {
     super(options)
 

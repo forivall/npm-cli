@@ -353,6 +353,7 @@ class Shrinkwrap {
       const isReg = isnpmReg || isYarnReg
       // don't use the simple version if the "registry" url is
       // something else entirely!
+      /** @type {Partial<ReturnType<typeof versionFromTgz>>} */
       const tgz = isReg && versionFromTgz(spec.name, resolved) || {}
       const yspec = tgz.name === spec.name && tgz.version === version ? version
         : isReg && tgz.name && tgz.version ? `npm:${tgz.name}@${tgz.version}`

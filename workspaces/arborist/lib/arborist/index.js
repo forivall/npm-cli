@@ -45,6 +45,8 @@ const mixins = [
 ]
 
 const _workspacesEnabled = Symbol.for('workspacesEnabled')
+/** @type {import('./index.types').Base} */
+// @ts-ignore
 const Base = mixins.reduce((a, b) => b(a), require('events'))
 const getWorkspaceNodes = require('../get-workspace-nodes.js')
 
@@ -64,6 +66,7 @@ const lockfileVersion = lfv => {
 }
 
 class Arborist extends Base {
+  /** @param {import('./index.types').ArboristOptions} options */
   constructor (options = {}) {
     process.emit('time', 'arborist:ctor')
     super(options)

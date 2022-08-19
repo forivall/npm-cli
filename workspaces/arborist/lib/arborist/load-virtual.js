@@ -30,7 +30,9 @@ const rootOptionProvided = Symbol('rootOptionProvided')
 const depsToEdges = (type, deps) =>
   Object.entries(deps).map(d => [type, ...d])
 
+/** @param {new (...args: any[]) => import('./index.types').ArboristIndex & InstanceType<ReturnType<import('./build-ideal-tree')>>} cls */
 module.exports = cls => class VirtualLoader extends cls {
+  /** @param {import('./index.types').ArboristOptions} options */
   constructor (options) {
     super(options)
 

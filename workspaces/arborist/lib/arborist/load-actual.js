@@ -39,7 +39,9 @@ const _topNodes = Symbol('linkTargets')
 const _transplant = Symbol('transplant')
 const _transplantFilter = Symbol('transplantFilter')
 
+/** @param {new (...args: any[]) => import('./index.types.js').ArboristIndex & InstanceType<ReturnType<import('./build-ideal-tree')>>} cls */
 module.exports = cls => class ActualLoader extends cls {
+  /** @param {import('./index.types.js').ArboristOptions} options */
   constructor (options) {
     super(options)
 
@@ -110,6 +112,7 @@ module.exports = cls => class ActualLoader extends cls {
   // if no shrinkwrap present, but reify() can still call buildIdealTree and
   // loadActual in parallel safely.
 
+  /** @param {import('./index.types.js').ArboristOptions & import('./index.types.js').ArboristLoadActualOptions} options */
   async [_loadActual] (options) {
     // mostly realpath to throw if the root doesn't exist
     const {

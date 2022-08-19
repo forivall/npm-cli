@@ -2,6 +2,9 @@ const _idealTreePrune = Symbol.for('idealTreePrune')
 const _workspacesEnabled = Symbol.for('workspacesEnabled')
 const _addNodeToTrashList = Symbol.for('addNodeToTrashList')
 
+/**
+ * @param {new (...args: any[]) => InstanceType<ReturnType<import('./build-ideal-tree')>> & import('./index.types').ArboristIndex} cls
+ */
 module.exports = cls => class Pruner extends cls {
   async prune (options = {}) {
     // allow the user to set options on the ctor as well.

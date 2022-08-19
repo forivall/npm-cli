@@ -105,7 +105,9 @@ const _resolvedAdd = Symbol.for('resolvedAdd')
 const _usePackageLock = Symbol.for('usePackageLock')
 const _formatPackageLock = Symbol.for('formatPackageLock')
 
+/** @param {new (...args: any) => InstanceType<ReturnType<import('../tracker')>> & InstanceType<ReturnType<import('./build-ideal-tree')>>} cls */
 module.exports = cls => class Reifier extends cls {
+  /** @param {import('./index.types').ArboristOptions} options */
   constructor (options) {
     super(options)
 
@@ -559,6 +561,8 @@ module.exports = cls => class Reifier extends cls {
 
     process.emit('time', 'reify:loadShrinkwraps')
 
+    /** @type {typeof import('.')} */
+    // @ts-ignore
     const Arborist = this.constructor
     return promiseAllRejectLate(shrinkwraps.map(diff => {
       const node = diff.ideal

@@ -7,6 +7,7 @@ const _global = Symbol.for('global')
 const _workspaces = Symbol.for('workspaces')
 const _includeWorkspaceRoot = Symbol.for('includeWorkspaceRoot')
 
+/** @param {new (...args: any[]) => import('./index.types.js').ArboristIndex & InstanceType<ReturnType<import('../tracker')>> & import('./index.types.js').ArboristApi} cls */
 module.exports = cls => class Auditor extends cls {
   async audit (options = {}) {
     this.addTracker('audit')

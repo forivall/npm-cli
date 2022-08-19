@@ -99,7 +99,9 @@ const _explicitRequests = Symbol('explicitRequests')
 const _global = Symbol.for('global')
 const _idealTreePrune = Symbol.for('idealTreePrune')
 
+/** @param {new (...args: any[]) => import('./index.types').ArboristIndex & InstanceType<ReturnType<import('../tracker')>> & InstanceType<ReturnType<import('./audit')>> & import('./index.types').ArboristApi} cls */
 module.exports = cls => class IdealTreeBuilder extends cls {
+  /** @param {import('./index.types').ArboristOptions} options */
   constructor (options) {
     super(options)
 
@@ -823,6 +825,8 @@ This is a one-time fix-up, please be patient...
       node.resolved &&
       (hasBundle || hasShrinkwrap)
     if (crackOpen) {
+      /** @type {typeof import('.')} */
+      // @ts-ignore
       const Arborist = this.constructor
       const opt = { ...this.options }
       await cacache.tmp.withTmp(this.cache, opt, async path => {

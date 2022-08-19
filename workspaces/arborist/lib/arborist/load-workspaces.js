@@ -5,7 +5,13 @@ const _appendWorkspaces = Symbol('appendWorkspaces')
 const _loadWorkspaces = Symbol.for('loadWorkspaces')
 const _loadWorkspacesVirtual = Symbol.for('loadWorkspacesVirtual')
 
+/** @param {new (...args: any[]) => {}} cls */
 module.exports = cls => class MapWorkspaces extends cls {
+
+  /**
+   * @param {import('../node')} node
+   * @param {Map<string, string> | null} workspaces
+   */
   [_appendWorkspaces] (node, workspaces) {
     if (node && workspaces.size) {
       node.workspaces = workspaces
@@ -14,6 +20,7 @@ module.exports = cls => class MapWorkspaces extends cls {
     return node
   }
 
+  /** @param {import('../node')} node */
   async [_loadWorkspaces] (node) {
     if (node.workspaces) {
       return node

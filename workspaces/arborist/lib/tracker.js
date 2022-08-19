@@ -3,6 +3,7 @@ const _onError = Symbol('_onError')
 const _setProgress = Symbol('_setProgess')
 const npmlog = require('npmlog')
 
+/** @param {new (...args: any[]) => NodeJS.EventEmitter} cls */
 module.exports = cls => class Tracker extends cls {
   constructor (options = {}) {
     super(options)
