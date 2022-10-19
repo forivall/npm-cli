@@ -5,6 +5,7 @@ const util = require('util')
 const relpath = require('./relpath.js')
 
 class ArboristNode {
+  /** @param {import('./index').Node} tree */
   constructor (tree, path) {
     this.name = tree.name
     if (tree.packageName && tree.packageName !== this.name) {

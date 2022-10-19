@@ -31,6 +31,14 @@ class Diff {
     this.removed = []
   }
 
+  /**
+   * @param {object} kwargs
+   * @param {import('./node')} kwargs.actual
+   * @param {import('./node')} kwargs.ideal
+   * @param {import('./node')[]} kwargs.filterNodes
+   * @param {Set<import('./node')>} kwargs.shrinkwrapInflated
+   * @returns {Diff}
+   */
   static calculate ({
     actual,
     ideal,
